@@ -9,7 +9,7 @@ export default function App() {
       <div className="w-full">
         <Header />
       </div>
-      <div className="my-3 flex bg-gray-700 rounded-2xl w-full md:w-auto">
+      <div className="my-3 bg-gray-700 rounded-2xl w-full md:w-auto">
         <TaskInput />
       </div>
       <div className="bg-gray-700 my-3 rounded-2xl w-full">

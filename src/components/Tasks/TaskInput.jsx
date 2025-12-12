@@ -9,7 +9,6 @@ export default function TaskInput() {
 
     setNewTask({
       taskTitle,
-      taskDate,
       taskDescription,
     });
 
@@ -31,36 +30,20 @@ export default function TaskInput() {
             Create Task
           </h1>
         </div>
-        <div className="flex justify-between gap-5">
-          <div className="mt-5">
-            <div>
-              <h3 className="opacity-80 text-3xl text-emerald-600 font-bold">
-                Task title
-              </h3>
-              <input
-                value={taskTitle}
-                onChange={(e) => {
-                  setTaskTitle(e.target.value);
-                }}
-                className="w-full font-semibold rounded-md py-1 px-3 items-center mt-2 bg-white"
-                type="text"
-                placeholder="Make a UI design"
-              />
-            </div>
-            <div className="mt-5">
-              <h3 className="opacity-80 text-3xl text-emerald-600 font-bold">
-                Date
-              </h3>
-              <input
-                value={taskDate}
-                onChange={(e) => {
-                  setTaskDate(e.target.value);
-                }}
-                className="w-full font-semibold rounded-md py-1 px-3 items-center mt-2 bg-white"
-                type="date"
-                placeholder="Make a UI design"
-              />
-            </div>
+        <div className="mt-5">
+          <div className="m-4 flex">
+            <h3 className="opacity-80 text-3xl text-emerald-600 font-bold">
+              Task title
+            </h3>
+            <input
+              value={taskTitle}
+              onChange={(e) => {
+                setTaskTitle(e.target.value);
+              }}
+              className="w-full font-semibold rounded-md py-1 px-3 items-center mt-2 bg-white"
+              type="text"
+              placeholder="Make a UI design"
+            />
           </div>
           <div className="mt-4 m-4">
             <h3 className="opacity-80 text-3xl text-emerald-600 font-bold">

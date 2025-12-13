@@ -15,22 +15,44 @@ export default function TaskInput() {
     console.log(mainTask);
   };
 
-  let newTask = <h2>no task available</h2>;
+  const deleteHandler = (i) => {
+    let copyTask = [...mainTask];
+    copyTask.splice(i, 1);
+    setMainTask(copyTask);
+  };
 
-  newTask = mainTask.map((t, i) => {
-    return (
-      <div className="m-2 bg-emerald-600 rounded-xl p-2 text-white text-l">
-        <h5>
-          <span className="font-bold text-xl">Title : </span>
-          {t.taskTitle}
-        </h5>
-        <h5>
-          <span className="font-bold text-xl">Description : </span>
-          {t.taskDescription}
-        </h5>
-      </div>
-    );
-  });
+  let newTask = (
+    <h2 className="text-xl m-2 bg-emerald-600 rounded-xl p-2 text-white text-l font-semibold">
+      no task available
+    </h2>
+  );
+
+  if (mainTask.length > 0) {
+    newTask = mainTask.map((t, i) => {
+      return (
+        <li key={i} className="flex-wrap wrap-break-word mb-3">
+          <div className="m-2 mb-1 bg-emerald-600 rounded-xl p-2 text-white text-l font-semibold">
+            <h5>
+              <span className="font-bold text-xl">Title : </span>
+              {t.taskTitle}
+            </h5>
+            <h5>
+              <span className="font-bold text-xl ">Description : </span>
+              {t.taskDescription}
+            </h5>
+          </div>
+          <button
+            onClick={() => {
+              deleteHandler(i);
+            }}
+            className="m-2 bg-red-500 rounded-xl p-2 text-white text-l font-semibold"
+          >
+            Delete
+          </button>
+        </li>
+      );
+    });
+  }
 
   return (
     <div className="">
@@ -86,6 +108,7 @@ export default function TaskInput() {
         </form>
       </div>
       <div className=" my-3 bg-gray-700 rounded-2xl p-4">
+        <h1 className="text-2xl text-white font-bold mb-4">Your Task List -</h1>
         <ul>{newTask}</ul>
       </div>
     </div>

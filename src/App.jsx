@@ -4,7 +4,7 @@ import TaskInput from "./components/Tasks/TaskInput.jsx";
 
 export default function App() {
   return (
-    <div className="m-9 flex flex-wrap">
+    <div className="my-9 mx-5 flex flex-wrap">
       <div className="w-full">
         <Header />
       </div>

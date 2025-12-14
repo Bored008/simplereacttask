@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <div className="text-center text-white text-sm p-4 border-slate-800">
+    <div className="text-center text-white p-2 border-slate-800 text-xl">
       <p>Mission Control Dashboard • Built with React</p>
-      <p className="">
+      <p className="pt-1">
         Connect with me :
         <a
           className="pl-2"

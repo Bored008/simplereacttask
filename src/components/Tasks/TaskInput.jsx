@@ -1,10 +1,14 @@
+import { setLocalStorageData } from "../../Localstorage";
 import locked from "./locked.gif";
 import { useState } from "react";
+import { getLocalStorageData } from "../../Localstorage";
 
 export default function TaskInput() {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
-  const [mainTask, setMainTask] = useState([]);
+  const [mainTask, setMainTask] = useState(() => getLocalStorageData());
+
+  setLocalStorageData(mainTask);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -58,7 +62,7 @@ export default function TaskInput() {
   return (
     <div className="">
       <div className="flex gap-5">
-        <div className=" my-3 bg-gray-700 rounded-2xl w-full md:w-1/2">
+        <div className=" my-3 bg-gray-700 rounded-2xl w-full md:w-3/5">
           <form
             onSubmit={(e) => {
               submitHandler(e);
@@ -87,7 +91,7 @@ export default function TaskInput() {
                 />
               </div>
               <div className="mt-4 m-4">
-                <h3 className="opacity-80 text-3xl text-emerald-600 font-bold">
+                <h3 className="w-full opacity-80 text-3xl text-emerald-600 font-bold">
                   Description
                 </h3>
                 <textarea
@@ -109,7 +113,7 @@ export default function TaskInput() {
             </div>
           </form>
         </div>
-        <div className="m-30 hidden md:block">
+        <div className="m-12 hidden md:block">
           <img src={locked} alt="locked"></img>
         </div>
       </div>

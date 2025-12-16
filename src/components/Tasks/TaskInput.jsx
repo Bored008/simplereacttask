@@ -2,6 +2,7 @@ import { setLocalStorageData } from "../../Localstorage";
 import locked from "./locked.gif";
 import { useState } from "react";
 import { getLocalStorageData } from "../../Localstorage";
+import TaskList from "./TaskList";
 
 export default function TaskInput() {
   const [taskTitle, setTaskTitle] = useState("");
@@ -12,7 +13,10 @@ export default function TaskInput() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setMainTask([...mainTask, { taskTitle, taskDescription }]);
+    if(!taskTitle.trim() || !taskDescription.trim()){
+       return alert("Title or description incomplete");
+    }
+    setMainTask([...mainTask, { taskTitle, taskDescription, createdAt:new Date().toLocaleString(), completed:false }]);
 
     setTaskTitle("");
     setTaskDescription("");
@@ -20,47 +24,8 @@ export default function TaskInput() {
     console.log(mainTask);
   };
 
-  const deleteHandler = (i) => {
-    let copyTask = [...mainTask];
-    copyTask.splice(i, 1);
-    setMainTask(copyTask);
-  };
-
-  let newTask = (
-    <h2 className="text-xl m-2 bg-emerald-600 rounded-xl p-2 text-white text-l font-semibold">
-      no task available
-    </h2>
-  );
-
-  if (mainTask.length > 0) {
-    newTask = mainTask.map((t, i) => {
-      return (
-        <li key={i} className="flex-wrap wrap-break-word mb-3">
-          <div className="m-2 mb-1 bg-emerald-600 rounded-xl p-2 text-white text-l font-semibold">
-            <h5>
-              <span className="font-bold text-xl">Title : </span>
-              {t.taskTitle}
-            </h5>
-            <h5>
-              <span className="font-bold text-xl ">Description : </span>
-              {t.taskDescription}
-            </h5>
-          </div>
-          <button
-            onClick={() => {
-              deleteHandler(i);
-            }}
-            className="m-2 bg-red-500 rounded-xl p-2 text-white text-l font-semibold"
-          >
-            Delete
-          </button>
-        </li>
-      );
-    });
-  }
-
   return (
-    <div className="">
+    <>
       <div className="flex gap-5">
         <div className=" my-3 bg-gray-700 rounded-2xl w-full md:w-3/5">
           <form
@@ -106,7 +71,7 @@ export default function TaskInput() {
                   id=""
                   placeholder="Detailed description of task (Max 500 word)"
                 ></textarea>
-                <button className="mt-6 text-white bg-green-400 w-full p-3 font-bold text-xl rounded-lg">
+                <button className="mt-6 text-white bg-green-500 w-full p-3 font-bold text-xl rounded-lg">
                   Create Task
                 </button>
               </div>
@@ -117,10 +82,7 @@ export default function TaskInput() {
           <img src={locked} alt="locked"></img>
         </div>
       </div>
-      <div className=" my-3 bg-gray-700 rounded-2xl p-4">
-        <h1 className="text-2xl text-white font-bold mb-4">Your Task List -</h1>
-        <ul>{newTask}</ul>
-      </div>
-    </div>
+      <TaskList mainTask={mainTask} setMainTask={setMainTask} />
+    </>
   );
 }

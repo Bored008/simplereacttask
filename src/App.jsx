@@ -22,7 +22,7 @@ export default function App() {
   return (
     <div className="min-h-screen pb-6 sm:pb-12 font-['Inter']">
       <Header />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-8 animate-fade-in">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-8">
         <section className="w-full">
           <TaskInput />
         </section>
@@ -35,3 +35,4 @@ export default function App() {
     </div>
   );
 }
+

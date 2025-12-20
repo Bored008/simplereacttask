@@ -44,8 +44,8 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-6">
-            <div className="px-2 sm:px-4 py-1.5 sm:py-2 bg-indigo-500/10 rounded-full border border-indigo-500/20">
-              <span className="text-indigo-400 font-medium text-[9px] sm:text-sm whitespace-nowrap">
+            <div className="px-3 sm:px-4 py-2 bg-indigo-500/10 rounded-full border border-indigo-500/20">
+              <span className="text-indigo-400 font-bold text-[11px] sm:text-sm whitespace-nowrap tracking-tight">
                 {date} • <span className="text-white">{time}</span>
               </span>
             </div>
